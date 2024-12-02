@@ -21,12 +21,6 @@
     src: 'etc/ansible/facts.d/rclone.fact.j2'
     dest: '{{ rclone_fact_path }}'
     mode: '0755'
-  notify: Update facts
-
-- name: Re-read facts after adding custom fact
-  ansible.builtin.setup:
-    fact_path: "{{ rclone_fact_path }}"
-    filter: ansible_local
 
 - name: Handle stable version number
   when:
